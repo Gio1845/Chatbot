@@ -1,0 +1,11 @@
+Requerimientos:
+python3 
+instalar Kivy 2.0.0
+instalar extension KvLang
+instalar Spacy
+instalar las dependencias de kivy y spacy:
+
+	-python -m pip install docutils pygments pypiwin32 kivy_deps.sdl2==0.1.* kivy_deps.glew==0.1.*
+	-python -m pip install kivy_deps.gstreamer==0.1.*
+	-python -m pip install kivy==2.0.0rc2
+	-pip install spacy spacy-lookups-data
