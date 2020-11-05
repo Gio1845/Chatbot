@@ -33,6 +33,24 @@ self_state_responses = [
     "I fine now, thank you",
     "I´m great, and you?",
 ]
+goodbye = ["bye", "see", "goodbye"]
+goodbye_responses = [
+    "bye bye friend",
+    "bye",
+    "see you leter",
+]
+dolike = ["like"]
+Dolike_responses = [
+        "yes i like this",
+        "meh",
+        "nop thanks",
+    ]
+doneed = ["need"]
+Doneed_responses = [
+        "nop, thanks",
+        "no in this moment",
+        "maybe later",
+    ]
 
 class AI():
 
@@ -62,6 +80,14 @@ class AI():
                 responses += [random.choice(self_state_responses)]
             else:
                 responses += ["I'm sorry, I'm not sure how to answer that."]
+
+        elif label_dict["ROOT"].text.lower() in goodbye:
+            responses += [random.choice(goodbye_responses)]
+        elif label_dict ["ROOT"].text.lower() in dolike:
+            responses += [random.choice(Dolike_responses)]
+        elif label_dict ["ROOT"].text.lower() in doneed:
+            responses += [random.choice(Doneed_responses)]
+            
         else:
             # Responder con un mensaje de bienvenida aleatorio
             responses += [random.choice(welcome_responses)]

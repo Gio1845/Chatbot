@@ -134,6 +134,72 @@ TRAIN_DATA = [
             "deps": ["ROOT"],
         },
     ),
+    (
+        #  0    
+        "Do you like pizza",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+    (
+        #  0    
+        "Do you like football",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+    (
+        #  0    
+        "Do you like videogames",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+    (
+        #  0    
+        "Do you like apple",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+    (
+        #  0    
+        "Do you need help",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+    (
+        #  0    
+        "Do you need something",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+    (
+        #  0    
+        "Do you need eat",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+    (
+        #  0    
+        "Do you need sleep",
+        {
+            "heads": [1, 2, 2, 2],
+            "deps": ["-", "TARGET", "ROOT", "OBJECT"],
+        },
+    ),
+
+
     
     
     # (
@@ -284,6 +350,15 @@ def test_model(nlp):
         "bye bot",
         "bye",
         "see you",
+        
+       "do you like pizza bot?",
+       "do you like football?",
+       "do you like banana",
+
+       "do you need help?",
+       "do you need something?",
+       "do you need eat?",
+
 
         # "how is the weather",
         # "how did the cat get there",
@@ -321,8 +396,21 @@ def test_model(nlp):
     goodbye_responses = [
         "bye bye friend",
         "bye",
-        "see you leter"
+        "see you leter",
     ]
+    dolike = ["like"]
+    Dolike_responses = [
+        "yes i like this",
+        "meh",
+        "nop thanks",
+    ]
+    doneed = ["need"]
+    Doneed_responses = [
+        "nop, thanks",
+        "no in this moment",
+        "maybe later",
+    ]
+   
 
     docs = nlp.pipe(texts)
     for doc in docs:
@@ -350,8 +438,12 @@ def test_model(nlp):
             else:
                 responses += ["I'm sorry, I'm not sure how to answer that."]
 
-        if label_dict["ROOT"].text.lower() in goodbye:
+        elif label_dict["ROOT"].text.lower() in goodbye:
             responses += [random.choice(goodbye_responses)]
+        elif label_dict ["ROOT"].text.lower() in dolike:
+            responses += [random.choice(Dolike_responses)]
+        elif label_dict ["ROOT"].text.lower() in doneed:
+            responses += [random.choice(Doneed_responses)]
             
         else:
             # Responder con un mensaje de bienvenida aleatorio
